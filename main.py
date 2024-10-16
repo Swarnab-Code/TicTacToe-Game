@@ -37,4 +37,5 @@ while True:
                 game.restart()
 
     draw_figures(screen, game.board)
+    game.show_winner() # Show the winner or draw message
     pygame.display.update()

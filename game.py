@@ -1,3 +1,4 @@
+import pygame
 from constants import *
 from board import Board
 from draw import draw_lines, draw_vertical_winning_line, draw_horizontal_winning_line, draw_desc_diagonal, draw_asc_diagonal
@@ -14,8 +15,12 @@ class Game:
             # Check if there is any winner for the current mark
             if self.check_winner():
                 self.board.game_over = True
-            # Switch player
-            self.board.player = self.board.player % 2 + 1
+            elif self.board.is_board_full():
+                # Check for a draw
+                self.board.game_over = True
+            else:
+                # Switch player only if the game is not over
+                self.board.player = self.board.player % 2 + 1
 
     def check_winner(self):
         # Check if the current player has won
@@ -30,6 +35,23 @@ class Game:
                 draw_desc_diagonal(self.screen, self.board.player)
             elif win_type == "asc_diagonal":
                 draw_asc_diagonal(self.screen, self.board.player)
+            return True # A player has won
+        return False # No winner
+
+    def show_winner(self):
+        font = pygame.font.Font(None, 74)
+        if self.board.game_over:
+            if self.check_winner():
+                winner_text = f"PLAYER {self.board.player} WINS!"
+            else:
+                winner_text = "DRAW!"
+            
+            text_surface = font.render(winner_text, True, (255, 255, 255), (0, 0, 0))
+            text_rect = text_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2))  # Center the text
+            self.screen.blit(text_surface, text_rect)
+            pygame.display.update()
+            pygame.time.wait(3000) # Show the message for 3 sec
+            self.restart()
 
     def restart(self):
         # Restart the game
