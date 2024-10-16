@@ -11,6 +11,7 @@ class Game:
         if self.board.available_square(row, col):
             # Mark the square for the current player
             self.board.mark_square(row, col)
+            # Check if there is any winner for the current mark
             if self.check_winner():
                 self.board.game_over = True
             # Switch player

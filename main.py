@@ -2,7 +2,6 @@ import pygame
 import sys
 from constants import *
 from draw import draw_lines, draw_figures
-from board import Board
 from game import Game
 
 # Initialize pygame
@@ -15,6 +14,7 @@ screen.fill(BG_COLOR)
 
 # Initialize the game
 game = Game(screen)
+draw_lines(screen)
 
 # Main loop
 while True:
@@ -36,6 +36,5 @@ while True:
             if event.key == pygame.K_r:
                 game.restart()
 
-    draw_lines(screen)
     draw_figures(screen, game.board)
     pygame.display.update()

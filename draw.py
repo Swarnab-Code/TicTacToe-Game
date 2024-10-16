@@ -29,18 +29,18 @@ def draw_figures(screen, board):
 def draw_vertical_winning_line(screen, col, player):
     posX = col * SQUARE_SIZE + SQUARE_SIZE // 2
     color = CIRCLE_COLOR if player == 1 else CROSS_COLOR
-    pygame.draw.line(screen, color, (posX, 15), (posX, HEIGHT - 15), WIN_LINE_WIDTH)
+    pygame.draw.line(screen, color, (posX, 15), (posX, HEIGHT - 15), LINE_WIDTH)
 
 def draw_horizontal_winning_line(screen, row, player):
     posY = row * SQUARE_SIZE + SQUARE_SIZE // 2
     color = CIRCLE_COLOR if player == 1 else CROSS_COLOR
-    pygame.draw.line(screen, color, (15, posY), (WIDTH - 15, posY), WIN_LINE_WIDTH)
+    pygame.draw.line(screen, color, (15, posY), (WIDTH - 15, posY), LINE_WIDTH)
 
 def draw_desc_diagonal(screen, player):
     color = CIRCLE_COLOR if player == 1 else CROSS_COLOR
-    pygame.draw.line(screen, color, (15, 15), (WIDTH - 15, HEIGHT - 15), WIN_LINE_WIDTH)
+    pygame.draw.line(screen, color, (15, 15), (WIDTH - 15, HEIGHT - 15), LINE_WIDTH)
 
 def draw_asc_diagonal(screen, player):
     color = CIRCLE_COLOR if player == 1 else CROSS_COLOR
-    pygame.draw.line(screen, color, (15, HEIGHT - 15), (WIDTH - 15, 15), WIN_LINE_WIDTH)
+    pygame.draw.line(screen, color, (15, HEIGHT - 15), (WIDTH - 15, 15), LINE_WIDTH)
     
