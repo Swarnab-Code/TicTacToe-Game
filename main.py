@@ -2,6 +2,7 @@ import pygame
 import sys
 from constants import *
 from draw import draw_lines
+from board import Board
 
 # Initialize pygame
 pygame.init()
