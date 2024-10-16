@@ -1,12 +1,16 @@
 import pygame
 import sys
 from constants import *
+from draw import draw_lines
 
 # Initialize pygame
 pygame.init()
 
 # Screen setup
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("TIC TAC TOE")
+screen.fill(BG_COLOR)
+
 
 # Main loop
 while True:
@@ -15,4 +19,5 @@ while True:
         if event.type == pygame.QUIT:
             sys.exit()
 
+    draw_lines(screen)
     pygame.display.update()
