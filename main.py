@@ -1,8 +1,9 @@
 import pygame
 import sys
 from constants import *
-from draw import draw_lines
+from draw import draw_lines, draw_figures
 from board import Board
+from game import Game
 
 # Initialize pygame
 pygame.init()
@@ -12,6 +13,8 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("TIC TAC TOE")
 screen.fill(BG_COLOR)
 
+# Initialize the game
+game = Game()
 
 # Main loop
 while True:
@@ -20,5 +23,15 @@ while True:
         if event.type == pygame.QUIT:
             sys.exit()
 
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouseX = event.pos[0] # x
+            mouseY = event.pos[1] # y
+
+            clicked_row = int(mouseY // SQUARE_SIZE)
+            clicked_col = int(mouseX // SQUARE_SIZE)
+
+            game.play(clicked_row, clicked_col)
+
     draw_lines(screen)
+    draw_figures(screen, game.board)
     pygame.display.update()

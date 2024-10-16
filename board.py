@@ -10,7 +10,7 @@ class Board:
         # Mark the square with the current player (1 for O, 2 for X)
         self.board[row, col] = self.player
 
-    def available_square(self, row, col ):
+    def available_square(self, row, col):
         # Check if the square is available
         return self.board[row, col] == 0
     
