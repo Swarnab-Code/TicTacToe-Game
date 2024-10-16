@@ -14,7 +14,7 @@ pygame.display.set_caption("TIC TAC TOE")
 screen.fill(BG_COLOR)
 
 # Initialize the game
-game = Game()
+game = Game(screen)
 
 # Main loop
 while True:
@@ -23,7 +23,7 @@ while True:
         if event.type == pygame.QUIT:
             sys.exit()
 
-        if event.type == pygame.MOUSEBUTTONDOWN:
+        if event.type == pygame.MOUSEBUTTONDOWN and not game.board.game_over:
             mouseX = event.pos[0] # x
             mouseY = event.pos[1] # y
 
@@ -31,6 +31,10 @@ while True:
             clicked_col = int(mouseX // SQUARE_SIZE)
 
             game.play(clicked_row, clicked_col)
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_r:
+                game.restart()
 
     draw_lines(screen)
     draw_figures(screen, game.board)
