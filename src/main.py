@@ -9,6 +9,8 @@ pygame.init()
 
 # Screen setup
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
+icon = pygame.image.load('assets/icon/logo.png')
+pygame.display.set_icon(icon)
 pygame.display.set_caption("TIC TAC TOE")
 screen.fill(BG_COLOR)
 
